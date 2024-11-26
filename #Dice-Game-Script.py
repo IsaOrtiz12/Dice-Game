@@ -28,3 +28,13 @@ def play_turn():
     """
     dice = roll_dice(3)
     print(f"initial roll: {dice}")
+
+    while True:
+        #tuple out?
+        if len(set(dice)) == 1:
+            if dice[0] ==6: #DEMON DIE MUHAHAHAHAHAHAHHAHAHAHAHAHAHAAAAAAAAAAA
+                print("You rolled three sixes! DEMON DIE ACTIVATED")
+                demon_die = random.randint(1,6)
+                print(d"DEMON DIE rolled: {demon_die}")
+                return 18 - demon_die
+            print(f"Tuple out! You rolled three ones! Bonus Die Activated")
