@@ -52,3 +52,37 @@ def play_turn():
         free_dice = len(dice) - len(fixed_dice)
         if free_dice > 0: 
             reroll = input("do you want to re-rolla free dice? (yes/no) TYPE CAREFULLY OR PROGRAM WILL IMPLODE").lower()       
+            if reroll == "yes":
+                free_dice_values = roll_dice(free_dice)
+                print(f"re-rolled dice: {free_dice_values}")
+                dice = fixed_dice + free_dice_values
+                continue
+        score = sum(dice)
+        print(f"You stopped with a score of {score}.")
+        return score
+
+def main():
+    """
+    Main function of the game is below
+    """
+    terget_score = int(input("Enter your winning target score"))
+    players = int(input("enter the numeber of players"))
+    scores = [0] * players
+
+    while max(scores) < target_score:
+        for i in range(players): 
+            print(f"\nPlayer {i + 1}'s turn:")
+            scores[i] += play_turn()
+            prtint(f"Player {i + 1}'s total score: {scores[i]}")
+            if scores[i] >= target_score
+                break
+    
+    print("\nFinal scores:")
+    for i, score in enumerate(scores):
+        print(f"player {i + 1}: {score} ({rank(score)})")
+
+    winner = scores.index(max(scores)) + 1
+    print(f"\nPlayer {winner} wins!")
+
+if __name__ == "__main__":
+    main()
