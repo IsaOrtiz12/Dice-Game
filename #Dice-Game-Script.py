@@ -65,7 +65,7 @@ def main():
     """
     Main function of the game is below
     """
-    terget_score = int(input("Enter your winning target score"))
+    target_score = int(input("Enter your winning target score"))
     players = int(input("enter the numeber of players"))
     scores = [0] * players
 
@@ -73,8 +73,8 @@ def main():
         for i in range(players): 
             print(f"\nPlayer {i + 1}'s turn:")
             scores[i] += play_turn()
-            prtint(f"Player {i + 1}'s total score: {scores[i]}")
-            if scores[i] >= target_score
+            print(f"Player {i + 1}'s total score: {scores[i]}")
+            if scores[i] >= target_score:
                 break
     
     print("\nFinal scores:")
