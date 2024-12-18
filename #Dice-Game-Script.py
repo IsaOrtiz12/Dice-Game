@@ -4,9 +4,9 @@
 
 
 import random
-import pandas as pd # type: ignore
-import seaborn as sns # type: ignore
-import matplotlib.pyplot as plt # type: ignore
+import pandas as pd 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
 import time
 
 def roll_dice(num_dice) :
@@ -89,13 +89,23 @@ def main():
     for i in range(players):
         score_data[f'Player {i + 1}'] = []
 
+    turn = 0
     while max(scores) < target_score:
-        for i in range(players): 
+        turn += 1
+        score_data['Turn'].append(turn)
+        print(f"\n=== Turn {turn} ===")
+        for i in range(players):
             print(f"\nPlayer {i + 1}'s turn:")
+            start_time = time.process_time()  # Start timing the turn
             scores[i] += play_turn()
+            end_time = time.process_time()  # End timing
             print(f"Player {i + 1}'s total score: {scores[i]}")
+            print(f"Turn duration: {end_time - start_time:.2f} seconds")
+            score_data[f'Player {i + 1}'].append(scores[i])
             if scores[i] >= target_score:
                 break
+        if max(scores) >= target_score:
+            break
     
     print("\nFinal scores:")
     for i, score in enumerate(scores):
@@ -104,5 +114,10 @@ def main():
     winner = scores.index(max(scores)) + 1
     print(f"\nPlayer {winner} wins!")
 
+    # Visualize the score progression
+    print("\nEnjoy the visual representation of your score progression...Rerun code to play again")
+    visualize_scores(score_data)
+
 if __name__ == "__main__":
     main()
+    
