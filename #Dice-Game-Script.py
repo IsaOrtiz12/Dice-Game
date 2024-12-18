@@ -78,6 +78,7 @@ def visualize_scores(score_data):
     plt.show()
 
 
+
 def main():
     """
     Main function of the game is below
