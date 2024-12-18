@@ -4,6 +4,11 @@
 
 
 import random
+import pandas as pd # type: ignore
+import seaborn as sns # type: ignore
+import matplotlib.pyplot as plt # type: ignore
+import time
+
 def roll_dice(num_dice) :
     """
     Roll a specified number of dice and return a list of reults
@@ -61,6 +66,18 @@ def play_turn():
         print(f"You stopped with a score of {score}.")
         return score
 
+def visualize_scores(score_data):
+    """Visualize the score progression using Seaborn."""
+    score_df = pd.DataFrame(score_data)
+    score_df = score_df.melt(id_vars=['Turn'], var_name='Player', value_name='Score')
+    sns.lineplot(data=score_df, x='Turn', y='Score', hue='Player', marker='o')
+    plt.title("Score Progression")
+    plt.xlabel("Turn")
+    plt.ylabel("Cumulative Score")
+    plt.legend(title='Player')
+    plt.show()
+
+
 def main():
     """
     Main function of the game is below
@@ -68,6 +85,9 @@ def main():
     target_score = int(input("Enter your winning target score"))
     players = int(input("enter the numeber of players"))
     scores = [0] * players
+    score_data = {'Turn': []}
+    for i in range(players):
+        score_data[f'Player {i + 1}'] = []
 
     while max(scores) < target_score:
         for i in range(players): 
