@@ -6,6 +6,11 @@ The Tuple Out Dice Game is a fun dice game simulation. Players roll dice, strate
 
 Features
 In this game, players roll three dice during their turn. They can re-roll non-fixed dice (dice that don’t share the same value as another) to try for a higher score but must avoid “tuple out,” which happens when all three dice show the same number which results in zero points. Rolling three ones activates a Bonus Die, multiplying the score by the bonus roll number of a fourth die. Rolling three sixes triggers the Demon Die mode, where a fourth roll is subtracted from 18 to determine the player's score. Based on final scores, players receive the following ranks:  Noob, Nonchalant, Expert, or Legend.
+        Advanced Feature Topics(new)
+        Timing Analysis: Each player’s turn duration is measured using time.process_time() and displayed at the end of their turn.
+        Score Visualization: A Pandas DataFrame stores cumulative scores across turns.
+        Seaborn is used to create a line plot of score progression, making it easy to see how players performed over time.
+        These features make the game more engaging and provide a deeper layer of insight into player performance and game dynamics.
 
 How to Play
 To play, run the game in Python, set a target score, and specify the number of players. Players take turns rolling dice and can re-roll non-fixed dice until they choose to stop or “tuple out.” The turn score is the sum of all dice unless special conditions like the Bonus Die or Demon Die are triggered. Play continues until a player reaches or exceeds the target score or if they tuple out!
